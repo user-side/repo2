@@ -1,0 +1,80 @@
+---
+date: "2024-04-07"
+title: "Transformers"
+tags: ["pytorch", "LLMs", "transformers"]
+category: "Machine Learning"
+cover:
+  imageFile: "Transformers/tansformes.png"
+---
+
+**Transformers: A Simple Implementation using PyTorch**
+=====================================================
+
+### What are Transformers?
+
+Transformers are a type of neural network architecture introduced in the paper "Attention is All You Need" by Vaswani et al. in 2017. They are primarily used for natural language processing tasks, such as machine translation, language modeling, and text classification. The key innovation of transformers is the self-attention mechanism, which allows the model to weigh the importance of different input elements relative to each other.
+
+### PyTorch Implementation
+
+Here is a simple implementation of a transformer using PyTorch:
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Transformer(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim, num_heads):
+        super(Transformer, self).__init__()
+        self.self_attn = nn.MultiHeadAttention(input_dim, hidden_dim, num_heads)
+        self.feed_forward = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, input_tensor):
+        # Self-attention mechanism
+        attention_output = self.self_attn(input_tensor, input_tensor)
+        # Feed-forward network
+        output = self.feed_forward(attention_output)
+        return output
+
+class MultiHeadAttention(nn.Module):
+    def __init__(self, input_dim, hidden_dim, num_heads):
+        super(MultiHeadAttention, self).__init__()
+        self.query_linear = nn.Linear(input_dim, hidden_dim)
+        self.key_linear = nn.Linear(input_dim, hidden_dim)
+        self.value_linear = nn.Linear(input_dim, hidden_dim)
+        self.dropout = nn.Dropout(0.1)
+        self.num_heads = num_heads
+
+    def forward(self, query, key, value):
+        # Linear transformations
+        query = self.query_linear(query)
+        key = self.key_linear(key)
+        value = self.value_linear(value)
+        # Split into multiple heads
+        query = query.view(-1, self.num_heads, query.size(-1) // self.num_heads)
+        key = key.view(-1, self.num_heads, key.size(-1) // self.num_heads)
+        value = value.view(-1, self.num_heads, value.size(-1) // self.num_heads)
+        # Compute attention scores
+        attention_scores = torch.matmul(query, key.transpose(-1, -2)) / math.sqrt(query.size(-1))
+        attention_scores = F.softmax(attention_scores, dim=-1)
+        # Compute output
+        output = attention_scores * value
+        output = output.view(-1, output.size(-1) * self.num_heads)
+        output = self.dropout(output)
+        return output
+```
+### Input and Output
+
+The input to the transformer is a tensor of shape `(batch_size, sequence_length, input_dim)`, where `batch_size` is the number of input samples, `sequence_length` is the length of each input sequence, and `input_dim` is the number of features in each input element.
+
+The output of the transformer is a tensor of shape `(batch_size, sequence_length, output_dim)`, where `output_dim` is the number of features in each output element.
+
+### Example Usage
+
+Here's an example usage of the transformer:
+```python
+input_tensor = torch.randn(32, 10, 128)  # Batch size 32, sequence length 10, input dim 128
+transformer = Transformer(input_dim=128, hidden_dim=256, output_dim=128, num_heads=4)
+output = transformer(input_tensor)
+print(output.shape)  # Output shape: (32, 10, 128)
+```
+This implementation is a simplified version of the original transformer architecture, but it should give you a basic understanding of how transformers work. You can customize the architecture by modifying the `Transformer` and `MultiHeadAttention` classes to suit your specific use case.

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "CRUD operation",
+    "url": "https://github.com/john221wick/crud-demo",
+    "image": "github.png",
+    "desc": "Basic CRUD operation using svelte as frontend, express as backend and supabase as database",
+    "tech": ["svelte", "tailwindcss", "supabase", "express"]
+  },
+  {
+    "name": "CRUD operation",
+    "url": "https://github.com/john221wick/crud-demo",
+    "image": "github.png",
+    "desc": "Basic CRUD operation using svelte as frontend, express as backend and supabase as database",
+    "tech": ["svelte", "tailwindcss", "supabase", "express"]
+  }
+]

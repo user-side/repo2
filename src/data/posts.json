@@ -1,0 +1,16 @@
+[
+  {
+    "title": "test",
+    "url": "https://google.com",
+    "slug": "better-observability-into-your-local-clickhouse-instance-with-grafana-and-prometheus",
+    "cover": {
+      "imageFile": "checkly_observabilityHero.avif"
+    },
+    "date": "2024-12-17",
+    "category": "observability",
+    "tags": ["observability", "grafana", "prometheus", "clickhouse"],
+    "time": {
+      "text": "7 min read"
+    }
+  }
+]
