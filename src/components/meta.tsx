@@ -38,7 +38,7 @@ const Meta = () => {
 
         <meta property="og:type" content="profile" />
         <meta property="og:title" content="bhushan" />
-        <meta property="og:description" content="CEO of HTML" />
+        <meta property="og:description" content="john221wick" />
         <meta property="og:url" content={`https://ndo.dev/${router.pathname}`} />
         <meta property="profile:first_name" content="Nico" />
         <meta property="profile:last_name" content="Domino" />
