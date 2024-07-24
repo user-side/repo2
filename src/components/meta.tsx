@@ -39,9 +39,9 @@ const Meta = () => {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content="bhushan" />
         <meta property="og:description" content="john221wick" />
-        <meta property="og:url" content={`https://ndo.dev/${router.pathname}`} />
-        <meta property="profile:first_name" content="Nico" />
-        <meta property="profile:last_name" content="Domino" />
+        <meta property="og:url" content="will update soon" />
+        <meta property="profile:first_name" content="Bhushan" />
+        <meta property="profile:last_name" content="Bharat" />
         <meta property="profile:username" content="bhushan" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="bhushan" />
@@ -54,10 +54,10 @@ const Meta = () => {
             __html: JSON.stringify({
               "@context": "http://schema.org/",
               "@type": "Person",
-              name: "Nico Domino",
-              image: "https://ndo.dev/assets/img/avatar.png",
-              url: "https://ndo.dev",
-              jobTitle: "Fullstack Web Developer",
+              name: "Bhushan Bharat",
+              image: "will update",
+              url: "will update",
+              jobTitle: "will update",
               // worksFor: {
               //   "@type": "Organization",
               //   name: "Checkly",
